@@ -4,10 +4,15 @@
   "sideEffects": false,
   "license": "MIT",
   "exports": {
-    "./button": {
-      "types": "./src/button.tsx",
-      "import": "./dist/button.mjs",
-      "require": "./dist/button.js"
+    "./*": {
+      "types": "./src/*.tsx",
+      "import": "./dist/*.mjs",
+      "require": "./dist/*.js"
+    },
+    "./components/*": {
+      "types": "./src/components/ui/*.tsx",
+      "import": "./dist/components/ui/*.mjs",
+      "require": "./dist/components/ui/*.js"
     }
   },
   "scripts": {
@@ -18,15 +23,22 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "eslint": "^8.57.0",
-    "@repo/typescript-config": "*",
     "tsup": "^8.0.2",
     "typescript": "5.5.4"
   },
   "dependencies": {
-    "react": "^18.2.0"
+    "@radix-ui/react-slot": "^1.1.2",
+    "@repo/tailwind-config": "*",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.487.0",
+    "react": "^18.2.0",
+    "tailwind-merge": "^3.2.0",
+    "tw-animate-css": "^1.2.5"
   },
   "publishConfig": {
     "access": "public"

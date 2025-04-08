@@ -1,46 +1,79 @@
+import { Button, ButtonProps } from "@acme/ui/components/button";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@acme/ui/button";
 
-const meta: Meta<typeof Button> = {
-  component: Button,
+const meta: Meta<ButtonProps> = {
+  title: "Components/Button",
+  component: Button as any,
   argTypes: {
-    type: {
-      control: { type: "radio" },
-      options: ["button", "submit", "reset"],
+    variant: {
+      control: "select",
+      options: [
+        "default",
+        "destructive",
+        "outline",
+        "secondary",
+        "ghost",
+        "link",
+      ],
+    },
+    size: {
+      control: "select",
+      options: ["default", "sm", "lg", "icon"],
+    },
+    asChild: {
+      control: "boolean",
+    },
+    children: {
+      control: "text",
+      defaultValue: "Button",
     },
   },
 };
 
 export default meta;
+type Story = StoryObj<ButtonProps>;
 
-type Story = StoryObj<typeof Button>;
-
-/*
- *👇 Render functions are a framework specific feature to allow you control on how the component renders.
- * See https://storybook.js.org/docs/react/api/csf
- * to learn how to use render functions.
- */
-export const Primary: Story = {
-  render: (props) => (
-    <Button
-      {...props}
-      onClick={(): void => {
-        // eslint-disable-next-line no-alert -- alert for demo
-        alert("Hello from Turborepo!");
-      }}
-    >
-      Hello
-    </Button>
-  ),
-  name: "Button",
+export const Default: Story = {
   args: {
-    children: "Hello",
-    type: "button",
-    style: {
-      color: "blue",
-      border: "1px solid gray",
-      padding: 10,
-      borderRadius: 10,
-    },
-  },
+    variant: "default",
+    size: "default",
+    children: "Button",
+  } as ButtonProps,
+};
+
+export const Destructive: Story = {
+  args: {
+    variant: "destructive",
+    size: "default",
+    children: "Delete",
+  } as ButtonProps,
+};
+
+export const Outline: Story = {
+  args: {
+    variant: "outline",
+    size: "default",
+    children: "Outline",
+  } as ButtonProps,
+};
+
+export const Small: Story = {
+  args: {
+    size: "sm",
+    children: "Small",
+  } as ButtonProps,
+};
+
+export const Large: Story = {
+  args: {
+    size: "lg",
+    children: "Large",
+  } as ButtonProps,
+};
+
+export const Icon: Story = {
+  args: {
+    size: "icon",
+    children: "🔍",
+  } as ButtonProps,
 };
